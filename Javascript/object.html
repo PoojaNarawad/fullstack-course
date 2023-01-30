@@ -1,0 +1,173 @@
+Ex: Data
+
+<script>
+	var product = {
+		Name: '',
+		Price: 0,
+		Stock: false,
+		ShippedTo: [],
+	};
+	product.Name = prompt('Enter Name');
+	product.Price = prompt('Enter Price');
+	product.Stock = prompt('Stock true / false');
+	product.ShippedTo = prompt('Enter City');
+	document.write(
+		`Name=${product.Name}<br>Price=${product.Price}<br>Stock=${product.Stock}<br>City=${product.ShippedTo}`
+	);
+</script>
+
+Ex:
+<script>
+	var product = {
+		Name: '',
+		Price: 0,
+		Stock: false,
+		ShippedTo: [],
+		Quantity: 0,
+		Total: function () {
+			return this.Quantity * this.Price;
+		},
+		Print: function () {
+			document.write(
+				`Name=${this.Name}<br>Price=${this.Price}<br>Quantity=${
+					this.Quantity
+				}<br>Stock=${this.Stock}<br>City=${
+					this.ShippedTo
+				}<br>Total=${this.Total()}`
+			);
+		},
+	};
+	product.Name = prompt('Enter Name');
+	product.Price = parseFloat(prompt('Enter Price'));
+	product.Quantity = parseInt(prompt('Enter Quantity'));
+	product.Stock = prompt('Stock true / false');
+	product.ShippedTo = prompt('Enter City');
+	product.Print();
+</script>
+
+Ex: Consuming JSON data and Presenting using "fetch()" 1. Create a new folder in
+project by name "data" 2. Add a new file into folder by name "products.json" [ {
+"Name": "Samsung TV", "Price": 56000.44 }, { "Name": "Nike Casuals", "Price":
+3400.44 }, { "Name": "Winter Jacket", "Price": 6000.44 } ] 3. Create a new HTML
+page to consume and present data "object.html"
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSON</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			function GetDataClick() {
+				fetch('../data/products.json')
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						for (var product of data) {
+							var tr = document.createElement('tr');
+							var tdName = document.createElement('td');
+							var tdPrice = document.createElement('td');
+							tdName.innerHTML = product.Name;
+							tdPrice.innerHTML = product.Price;
+
+							tr.appendChild(tdName);
+							tr.appendChild(tdPrice);
+
+							document.querySelector('tbody').appendChild(tr);
+						}
+					});
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<div class="mt-3">
+			<button onclick="GetDataClick()" class="btn btn-primary">Get Data</button>
+		</div>
+		<div class="mt-3">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</body>
+</html>
+
+Ex: Fakestore API
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Fakestore</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			function GetProductsClick() {
+				fetch('http://fakestoreapi.com/products&quot')
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						for (var product of data) {
+							var tr = document.createElement('tr');
+							var tdTitle = document.createElement('td');
+							var tdPrice = document.createElement('td');
+							var tdPreview = document.createElement('td');
+							var tdRating = document.createElement('td');
+
+							tdTitle.innerHTML = product.title;
+							tdPrice.innerHTML = product.price;
+							tdRating.innerHTML = product.rating.rate;
+
+							var img = document.createElement('img');
+							img.src = product.image;
+							img.width = '100';
+							img.height = '100';
+
+							tdPreview.appendChild(img);
+
+							tr.appendChild(tdTitle);
+							tr.appendChild(tdPrice);
+							tr.appendChild(tdPreview);
+							tr.appendChild(tdRating);
+
+							document.querySelector('tbody').appendChild(tr);
+						}
+					});
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<div class="mt-2">
+			<button onclick="GetProductsClick()" class="btn btn-primary">
+				Get Products
+			</button>
+		</div>
+		<div class="mt-2">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Price</th>
+						<th>Preview</th>
+						<th>Rating</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</body>
+</html>

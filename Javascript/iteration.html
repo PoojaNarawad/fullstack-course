@@ -1,0 +1,102 @@
+Ex: while(i<=10) { document.write(i); i++; } Ex:
+<script>
+	var i = 11;
+	while (i <= 10) {
+		document.write(i + '<br>');
+		i++;
+	}
+</script>
+
+<!-- Note: Iterations will start only when condition is true. -->
+
+Ex:
+<script>
+	var i = 11;
+	do {
+		document.write(i + '<br>');
+		i++;
+	} while (i <= 10);
+</script>
+Ex: 1. Add a new file into data folder users.json [ { "UserName": "john" }, {
+"UserName": "john12" }, { "UserName": "john_nit" }, { "UserName": "david" } ] 2.
+Add a new HTML file "Register.html"
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Register</title>
+		<script>
+			function VerifyUser() {
+				var username = document.getElementById('UserName').value;
+				var msg = document.getElementById('msg');
+				fetch('../data/users.json')
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (users) {
+						for (var user of users) {
+							if (user.UserName == username) {
+								msg.innerHTML = 'User Name Taken : Try Another'.fontcolor(
+									'red'
+								);
+								break;
+							} else {
+								msg.innerHTML = 'User Name Available'.fontcolor('green');
+							}
+						}
+					});
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>Register User</legend>
+			<div>
+				<label>User Name</label>
+				<div>
+					<input type="text" onkeyup="VerifyUser()" id="UserName" />
+					<div id="msg"></div>
+				</div>
+			</div>
+		</fieldset>
+	</body>
+</html>
+
+<!-- Exception Handling functions -->
+<script>
+	var products = [
+		{Name: 'Samsung TV', Category: 'Electronics'},
+		{Name: 'Nike Casuals', Category: 'Footwear'},
+		{Name: 'Mobile', Category: 'Electronics'},
+		{Name: 'Lee Boot', Category: 'Footwear'},
+		{Name: 'Winter Jacket', Category: 'Fashion'},
+	];
+	for (var item of products) {
+		if (item.Category == 'Footwear' || item.Category == 'Fashion') {
+			continue;
+		}
+		document.write(item.Name + '<br>');
+	}
+</script>
+Ex:
+<script>
+	try {
+		var x = 10;
+		var y = 0;
+		if (y == 0) {
+			throw "Can't divide By Zero";
+		}
+		if (y > x) {
+			throw 'Number too large';
+		}
+		var z = x / y;
+		document.write('z=' + z);
+	} catch (ex) {
+		document.write(ex);
+	} finally {
+		console.log('Program End');
+	}
+</script>
+
+Ex: function PrintNumbers() { for(var i =0; i<=10; i++) { document.write(i +
+"<br />"); } }

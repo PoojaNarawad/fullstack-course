@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array Maniplations</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			var cities = ['Delhi', 'Pune'];
+			function LoadCities() {
+				cities.sort();
+				document.getElementById('lstCities').innerHTML = '';
+				for (var city of cities) {
+					var option = document.createElement('option');
+					option.text = city;
+					option.value = city;
+					document.getElementById('lstCities').appendChild(option);
+				}
+			}
+			function bodyload() {
+				LoadCities();
+				GetCount();
+			}
+			function AddClick() {
+				var cityName = document.getElementById('txtCity').value;
+				var cityIndex = cities.indexOf(cityName);
+				if (cityIndex >= 0) {
+					alert(`${cityName} Exists`);
+				} else {
+					if (cityName == '') {
+						alert('please Define Your City Name');
+					} else {
+						cities.push(cityName);
+						alert(`${cityName} added into cities.`);
+					}
+				}
+				LoadCities();
+				GetCount();
+				document.getElementById('txtCity').value = '';
+			}
+			function GetCount() {
+				document.getElementById('count').innerHTML = cities.length;
+			}
+			function RemoveClick() {
+				var selectedCity = document.getElementById('lstCities').value;
+				var selectedIndex = cities.indexOf(selectedCity);
+				var flag = confirm(`Are You Sure?Want to delete ${selectedCity}`);
+				if (flag == true) {
+					cities.splice(selectedIndex, 1);
+				}
+				LoadCities();
+				GetCount();
+			}
+
+			function RemoveMultipleClick() {
+				var selectMultipleCities = document.getElementById('lstCities').value;
+				var selectedIndex = cities.indexOf(selectedCity);
+				var flag = confirm(`Are You Sure?Want to delete ${selectedCities}`);
+				if (flag == true) {
+					cities.splice(selectedIndex, selectedIndex);
+				}
+				document.getElementById('count').innerHTML = '';
+				LoadCities();
+				GetCount();
+			}
+		</script>
+	</head>
+	<body class="container-fluid" onload="bodyload()">
+		<div class="row">
+			<div class="col-4">
+				<div class="mt-3">
+					<label class="form-label">Add New City</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="txtCity" />
+						<button onclick="AddClick()" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="mt-3">
+					<label class="form-label"
+						>Select Your City :
+						<span class="badge bg-dark text-white" id="count"></span
+					></label>
+					<div>
+						<select
+							id="lstCities"
+							multiple
+							class="form-select"
+							size="3"
+						></select>
+					</div>
+					<div class="mt-2">
+						<button onclick="RemoveClick()" class="btn btn-danger">
+							<span class="bi bi-trash-fill"></span>
+							Remove City
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	var values = [];
+	values[0] = 10;
+	values['1'] = 'John';
+	values['2'] = true;
+	for (var property in values) {
+		document.write(
+			`${property} - ${typeof property} : ${values[property]} [${typeof values[
+				property
+			]}]<br>`
+		);
+	}
+</script>
+
+<script>
+	var values = [
+		1,
+		'TV',
+		true,
+		function () {
+			document.write('Stock Available<br>');
+		},
+		['Delhi', 'Hyd'],
+	];
+	values[3]();
+	document.write(values[4][1]);
+</script>
+
+<script>
+	var values = [
+		1,
+		'TV',
+		function () {
+			document.write('Stock Available<br>');
+		},
+		['Delhi', 'Hyd'],
+	];
+	var [id, name, stock, cities] = values;
+	stock();
+	document.write(cities[1]);
+</script>
+
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	for (var item in categories) {
+		document.write(item + '<br>');
+	}
+</script>
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	for (var item of categories) {
+		document.write(item + '<br>');
+	}
+</script>
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	for (var property in categories) {
+		document.write(`[${property}] - ${categories[property]} <br>`);
+	}
+</script>
+
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	categories.map(function (value) {
+		document.write(`<li>${value}</li>`);
+	});
+</script>
+
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	for (var i = 0; i < categories.length; i++) {
+		document.write(categories[i] + '<br>');
+	}
+</script>
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	document.write(categories.toString());
+</script>
+
+Ex:
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	document.write(categories.join('-->'));
+</script>
+
+Ex:
+<script>
+	var categories = ['Electronics', 'Footwear', 'Fashion'];
+	document.write(categories.slice(1, 2));
+</script>
+
+Ex:
+<script>
+	var price = [56000.44, 24000.44, 62000.44, 42000.44];
+	var result = price.find(function (value) {
+		return value > 40000;
+	});
+	document.write(result);
+</script>
+
+Ex:
+<script>
+	var price = [56000.44, 24000.44, 62000.44, 42000.44];
+	var result = price.filter(function (value) {
+		return value > 40000;
+	});
+	document.write(result);
+</script>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array</title>
+		<script>
+			var categories = [
+				'All',
+				'Electronics',
+				'Footwear',
+				'Fashion',
+				"Men's Clothing",
+			];
+			function bodyload() {
+				for (var item of categories) {
+					var li = document.createElement('li');
+					li.innerHTML = item;
+					document.querySelector('ol').appendChild(li);
+
+					var option = document.createElement('option');
+					option.text = item;
+					option.value = item;
+					document.getElementById('lstCategories').appendChild(option);
+
+					var tr = document.createElement('tr');
+					var td = document.createElement('td');
+					td.innerHTML = item;
+					tr.appendChild(td);
+					document.querySelector('tbody').appendChild(tr);
+				}
+			}
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<h2>Categories</h2>
+		<ol></ol>
+		<h2>Select Category</h2>
+		<select id="lstCategories"></select>
+		<h2>Categories Menu</h2>
+		<table border="1" width="300">
+			<thead>
+				<th>Categories</th>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array</title>
+		<script>
+			var gallery = [
+				'../public/images/shoe.jpg',
+				'../public/images/backpack.jpg',
+				'../public/images/jacket.jpg',
+				'../public/images/speaker.jpg',
+			];
+			function bodyload() {
+				for (var path of gallery) {
+					var img = document.createElement('img');
+					img.src = path;
+					img.width = '200';
+					img.height = '200';
+					document.querySelector('marquee').appendChild(img);
+				}
+			}
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<marquee scrollamount="15"> </marquee>
+	</body>
+</html>
+
+<!-- Ex: http://fakestoreapi.com/products/categories -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array</title>
+		<script>
+			function bodyload() {
+				fetch('http://fakestoreapi.com/products/categories&quot')
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (categories) {
+						for (var item of categories) {
+							var li = document.createElement('li');
+							li.innerHTML = item.toUpperCase();
+							document.querySelector('ol').appendChild(li);
+
+							var option = document.createElement('option');
+							option.text = item;
+							option.value = item;
+							document.querySelector('select').appendChild(option);
+						}
+					});
+			}
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<ol></ol>
+		<select></select>
+	</body>
+</html>
+
+Ex:
+<script>
+	var cities = ['Delhi', 'Hyd'];
+	cities.splice(1, 0, 'Goa');
+	for (var property in cities) {
+		document.write(`[${property}] : ${cities[property]}<br>`);
+	}
+</script>
+<script>
+	var cities = ['Delhi', 'Hyd', 'Mumbai', 'Goa'];
+	var removedItem = cities.splice(2, 1);
+	for (var property in cities) {
+		document.write(`[${property}] : ${cities[property]}<br>`);
+	}
+	document.write(`${removedItem} removed from cities.`);
+</script>
+Ex:
+<script>
+	var cities = ['Delhi', 'Hyd', 'Mumbai', 'Goa', 'Bangalore', 'Chennai'];
+	cities.sort();
+	cities.reverse();
+	for (var property in cities) {
+		document.write(`[${property}] : ${cities[property]}<br>`);
+	}
+</script>
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array Manipulation</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			var cities = ['Delhi', 'Hyd'];
+			function LoadCities() {
+				cities.sort();
+				document.getElementById('lstCities').innerHTML = '';
+				for (var city of cities) {
+					var option = document.createElement('option');
+					option.text = city;
+					option.value = city;
+					document.getElementById('lstCities').appendChild(option);
+				}
+			}
+			function bodyload() {
+				LoadCities();
+				GetCount();
+			}
+			function AddClick() {
+				var cityName = document.getElementById('txtCity').value;
+				var cityIndex = cities.indexOf(cityName);
+				if (cityIndex >= 0) {
+					alert(`${cityName} Exists`);
+				} else {
+					if (cityName == '') {
+						alert('Please Define a City Name');
+					} else {
+						cities.push(cityName);
+						alert(`${cityName} added into Cities.`);
+					}
+				}
+
+				LoadCities();
+				GetCount();
+				document.getElementById('txtCity').value = '';
+			}
+			function GetCount() {
+				document.getElementById('count').innerHTML = cities.length;
+			}
+			function RemoveClick() {
+				var selectedCity = document.getElementById('lstCities').value;
+				var selectedIndex = cities.indexOf(selectedCity);
+				var flag = confirm(`Are you sure? Want to delete ${selectedCity}`);
+				if (flag == true) {
+					cities.splice(selectedIndex, 1);
+				}
+				LoadCities();
+				GetCount();
+			}
+		</script>
+	</head>
+	<body class="container-fluid" onload="bodyload()">
+		<div class="row">
+			<div class="col-4">
+				<div class="mt-3">
+					<label class="form-label">Add New City</label>
+					<div class="input-group">
+						<input type="text" class="form-control" id="txtCity" />
+						<button onclick="AddClick()" class="btn btn-primary">Add</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-8">
+				<div class="mt-3">
+					<label class="form-label"
+						>Select Your City :
+						<span class="badge bg-dark text-white" id="count"></span
+					></label>
+					<div>
+						<select
+							id="lstCities"
+							multiple
+							class="form-select"
+							size="3"
+						></select>
+					</div>
+					<div class="mt-2">
+						<button onclick="RemoveClick()" class="btn btn-danger">
+							<span class="bi bi-trash-fill"></span>
+							Remove City
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,292 @@
+Ex: Verify Even Number
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Operator</title>
+		<script>
+			function VerifyClick() {
+				var txtEven = document.getElementById('txtEven').value;
+				var lblError = document.getElementById('lblError');
+				if (parseInt(txtEven) % 2 == 0) {
+					document.write('Verified Successfully..');
+				} else {
+					lblError.innerHTML = 'Not an Even Number'.fontcolor('red');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<dl>
+			<dt>Enter an Even Number</dt>
+			<dd>
+				<input type="text" id="txtEven" /><button onclick="VerifyClick()">
+					Verify
+				</button>
+			</dd>
+			<dd id="lblError"></dd>
+		</dl>
+	</body>
+</html>
+
+Ex: EMI Calculator
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>EMI Calculator</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			function AmountChange() {
+				document.getElementById('txtAmount').value =
+					document.getElementById('amountRange').value;
+			}
+			function YearChange() {
+				document.getElementById('txtYears').value =
+					document.getElementById('yearRange').value;
+			}
+			function RateChange() {
+				document.getElementById('txtRate').value =
+					document.getElementById('interestRange').value;
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<div class="mt-3">
+			<div class="row">
+				<div class="col">
+					Amount you need <input size="10" type="text" id="txtAmount" />
+				</div>
+				<div class="col">
+					for <input type="text" size="2" id="txtYears" /> years
+				</div>
+				<div class="col">
+					Interest rate <input type="text" id="txtRate" size="4" />
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col">
+					<input
+						type="range"
+						onchange="AmountChange()"
+						class="form-range"
+						min="10000"
+						value="10000"
+						max="100000"
+						id="amountRange"
+					/>
+				</div>
+				<div class="col">
+					<input
+						type="range"
+						onchange="YearChange()"
+						class="form-range"
+						min="1"
+						value="1"
+						max="5"
+						id="yearRange"
+					/>
+				</div>
+				<div class="col">
+					<input
+						type="range"
+						onchange="RateChange()"
+						class="form-range"
+						min="10"
+						value="10"
+						step="0.5"
+						max="20"
+						id="interestRange"
+					/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">10,000 to 1,00,000 /-</div>
+				<div class="col">1 to 5</div>
+				<div class="col">10% to 20%</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="text-center">
+						<button class="btn btn-primary">Calculate</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	var product = {
+		Name: 'TV',
+		Price: 45000.33,
+	};
+	delete product.Price;
+	delete Math.PI; // not a valid operation
+	document.write(
+		`Name=${product.Name}<br>Price=${product.Price}<br> ${Math.PI}`
+	);
+</script>
+
+Ex: Toggle
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Special Operator</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			var buttonText = 'Hide Preview';
+			var displayStyle = 'block';
+			function Toggle() {
+				document.getElementById('btnPreview').innerHTML = buttonText;
+				document.getElementById('imageContainer').style.display = displayStyle;
+			}
+			function bodyload() {
+				Toggle();
+			}
+			function PreviewToggle() {
+				buttonText =
+					buttonText == 'Hide Preview' ? 'Show Preview' : 'Hide Preview';
+				displayStyle = displayStyle == 'block' ? 'none' : 'block';
+				Toggle();
+			}
+		</script>
+	</head>
+	<body class="container-fluid" onload="bodyload()">
+		<div class="mt-2">
+			<button
+				id="btnPreview"
+				onclick="PreviewToggle()"
+				class="btn btn-primary"
+			></button>
+		</div>
+		<div class="mt-2" id="imageContainer">
+			<img src="../public/images/speaker.jpg" width="200" height="200" />
+		</div>
+	</body>
+</html>
+
+Ex: Toggle Checkbox
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CheckBox</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			var cbText = 'Out of Stock';
+			function Toggle() {
+				document.getElementById('checkboxText').innerHTML = cbText;
+			}
+			function bodyload() {
+				Toggle();
+			}
+			function CheckboxChanged() {
+				var stock = document.getElementById('stock');
+				cbText = stock.checked ? 'Available' : 'Out of Stock';
+				Toggle();
+			}
+		</script>
+	</head>
+	<body onload="bodyload()" class="container-fluid">
+		Stock :
+		<div class="mt-3 form-switch">
+			<input
+				id="stock"
+				type="checkbox"
+				onchange="CheckboxChanged()"
+				class="form-check-input"
+			/>
+			<label id="checkboxText" class="form-check-label"></label>
+		</div>
+	</body>
+</html>
+
+Ex: Without Ternary operator if(stock.checked) { cbText = "Available"; } else {
+cbText = "Out of Stock"; }
+
+<script>
+	var product = {
+		Name: 'TV',
+		Price: 45000.33,
+		Stock: true,
+	};
+	for (var property in product) {
+		document.write(`${property} : ${typeof product[property]}<br>`);
+	}
+</script>
+
+Ex:
+<script>
+	class Employee {}
+	class Student {}
+	var john = new Employee();
+	var david = new Student();
+	var product = new Array();
+
+	document.write(
+		`John is Employee : ${john instanceof Employee}<br>
+         John is Student  : ${john instanceof Student} <br>
+         product is Array : ${product instanceof Array} <br>
+         product is object: ${product instanceof Object}
+    `
+	);
+</script>
+
+Ex:
+<head>
+	<script>
+		function bodyload() {
+			var pic1 = new Image();
+			pic1.src = '../public/images/shoe.jpg';
+			pic1.width = '100';
+			pic1.height = '100';
+			document.getElementById('pic1').appendChild(pic1);
+
+			var pic2 = document.createElement('img');
+			pic2.src = '../public/images/speaker.jpg';
+			pic2.width = '100';
+			pic2.height = '100';
+			document.getElementById('pic2').appendChild(pic2);
+		}
+	</script>
+</head>
+<body onload="bodyload()">
+	<div id="pic1"></div>
+	<div id="pic2"></div>
+</body>
+
+Ex: functions
+<script>
+	function addition(a, b) {
+		var c = a + b;
+		document.write(`C=${c}<br>`);
+	}
+	function add(a, b) {
+		return a + b;
+	}
+	addition(10, 20);
+	document.write(add(30, 20));
+</script>
+
+Ex:
+<script>
+	var product = {
+		Name: 'TV',
+		Price: 56000.44,
+	};
+	delete product.Price;
+	document.write('Price' in product);
+</script>
+
+Ex: for..in for(var property in object ) { }

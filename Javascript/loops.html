@@ -1,0 +1,185 @@
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forward Jump</title>
+		<script>
+			var userDetails = {
+				CardNumber: '4545666677778888',
+				Cvv: '4430',
+				Expiry: '2023',
+			};
+			function VerifyCard() {
+				var card = document.getElementById('txtCard').value;
+				if (card == userDetails.CardNumber) {
+					document.getElementById('txtCvv').disabled = false;
+					document.getElementById('txtCard').readOnly = true;
+				}
+			}
+			function VerifyCvv() {
+				var cvv = document.getElementById('txtCvv').value;
+				if (cvv == userDetails.Cvv) {
+					document.getElementById('lstExpiry').disabled = false;
+					document.getElementById('txtCvv').readOnly = true;
+				}
+			}
+			function VerifyExpiry() {
+				var expiry = document.getElementById('lstExpiry').value;
+				if (expiry == userDetails.Expiry) {
+					document.getElementById('btnPay').disabled = false;
+					document.getElementById('lstExpiry').readOnly = true;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>Payment Details</legend>
+			<dl>
+				<dt>Card Number</dt>
+				<dd><input type="text" onkeyup="VerifyCard()" id="txtCard" /></dd>
+				<dt>CVV</dt>
+				<dd>
+					<input
+						disabled
+						type="text"
+						onkeyup="VerifyCvv()"
+						id="txtCvv"
+						size="6"
+					/>
+				</dd>
+				<dt>Expiry</dt>
+				<dd>
+					<select onchange="VerifyExpiry()" disabled id="lstExpiry">
+						<option>2022</option>
+						<option>2023</option>
+						<option>2024</option>
+					</select>
+				</dd>
+			</dl>
+			<button disabled id="btnPay">Pay</button>
+		</fieldset>
+	</body>
+</html>
+
+Ex: Login.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<script>
+			var userDetails = {
+				UserName: 'john123',
+				Password: 'john@12',
+			};
+			function LoginClick() {
+				var username = document.getElementById('txtName').value;
+				var password = document.getElementById('txtPwd').value;
+				if (
+					username == userDetails.UserName &&
+					password == userDetails.Password
+				) {
+					document.write('<h2>Login Success..</h2>');
+				} else {
+					document.getElementById('msg').innerHTML = 'Invalid Credentials';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>User Login</legend>
+			<dl>
+				<dt>User Name</dt>
+				<dd><input type="text" id="txtName" /></dd>
+				<dt>Password</dt>
+				<dd><input type="password" id="txtPwd" /></dd>
+			</dl>
+			<button onclick="LoginClick()">Login</button>
+		</fieldset>
+		<h2 align="center" id="msg"></h2>
+	</body>
+</html>
+
+Ex: Login.html
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<script>
+			var userDetails = {
+				UserName: 'john123',
+				Password: 'john@12',
+			};
+			function LoginClick() {
+				var username = document.getElementById('txtName').value;
+				var password = document.getElementById('txtPwd').value;
+				var msg = document.getElementById('msg');
+				if (username == userDetails.UserName) {
+					if (password == userDetails.Password) {
+						document.write('<h2>Login Success</h2>');
+					} else {
+						msg.innerHTML = 'Invalid Password';
+					}
+				} else {
+					msg.innerHTML = 'Invalid User Name';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>User Login</legend>
+			<dl>
+				<dt>User Name</dt>
+				<dd><input type="text" id="txtName" /></dd>
+				<dt>Password</dt>
+				<dd><input type="password" id="txtPwd" /></dd>
+			</dl>
+			<button onclick="LoginClick()">Login</button>
+		</fieldset>
+		<h2 align="center" id="msg"></h2>
+	</body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<script>
+			var userDetails = {
+				UserName: 'john123',
+				Password: 'john@12',
+				Mobile: '+919876543210',
+			};
+			function LoginClick() {
+				var username = document.getElementById('txtName').value;
+				var password = document.getElementById('txtPwd').value;
+				var msg = document.getElementById('msg');
+				if (username == userDetails.UserName) {
+					document.write(`<h2>Login Success - ${username}`);
+				} else if (username == userDetails.Mobile) {
+					document.write(`<h2>OTP Sent to ${username}`);
+				} else {
+					msg.innerHTML = 'Please provide valid UserName or Mobile';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>User Login</legend>
+			<dl>
+				<dt>User Name or Mobile</dt>
+				<dd><input type="text" id="txtName" /></dd>
+				<dt>Password</dt>
+				<dd><input type="password" id="txtPwd" /></dd>
+			</dl>
+			<button onclick="LoginClick()">Login</button>
+		</fieldset>
+		<h2 align="center" id="msg"></h2>
+	</body>
+</html>

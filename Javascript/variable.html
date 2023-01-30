@@ -1,0 +1,121 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScriptdemo</title>
+		<script>
+			function bodyloady() {
+				forms = document.getElementsByTagName('form');
+				alert(`Total Number of Forms : ${forms.length}`);
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<p></p>
+		<div>
+			<img width="100" name="pic" id="pic" height="100" border="1" />
+		</div>
+		<div>
+			<form name="frmRegister">
+				<h2>Register</h2>
+				Email :
+
+				<input type="email" />
+				<input
+					type="button"
+					id="btnRegister"
+					class="btn-register"
+					name="btnRegister"
+				/>
+			</form>
+		</div>
+		<div>
+			<form name="frmLogin">
+				<h2>Login</h2>
+				Mobile:
+				<input type="button" id="btnLogin" name="btnLogin" />
+				<input type="text" />
+			</form>
+		</div>
+	</body>
+</html> -->
+
+<script>
+	'use strict';
+	function f1() {
+		var x; //declaring
+		x = 10; // assigning
+		if (x == 10) {
+			var y = 20; // initialization
+			var y = 40; // Shadowing
+		}
+		document.write('X=' + x + '<br>' + 'Y=' + y);
+	}
+	f1();
+</script>
+Ex:
+<script>
+	'use strict';
+	function f1() {
+		x = 10;
+		document.write('x=' + x);
+		var x; // x is hoisted
+	}
+	f1();
+</script>
+<script>
+	'use strict';
+	function f1() {
+		x = 20;
+		document.write('x=' + x);
+		let x; // invalid
+	}
+	f1();
+</script>
+
+Syntax: const x; // invalid x = 10; // invalid const x =10; // valid x = 20; //
+invalid - you can't assign Ex:
+<script>
+	// module
+	'use strict';
+	var x = 10;
+	let y = 20;
+	const z = 30;
+	function f1() {
+		document.write('F1 : x=' + x + ' y=' + y + ' z=' + z + '<br>');
+	}
+	function f2() {
+		document.write('F2 : x=' + x + ' y=' + y + ' z=' + z + '<br>');
+	}
+	f1();
+	f2();
+</script>
+
+FAQ: Can we declare a variable inside function and make it global in access?
+Ans: Yes. By using "window" object you can declare a global varible inside a
+function.
+
+<!-- Ex:
+<script>
+    // module
+    "use strict";
+     var x = 10;
+     let y = 20;
+     const z = 30;
+     
+     function f1(){
+        window.a = 500;
+        document.write("F1 : x=" + x + " y=" + y + " z=" + z + "<br>");
+     }
+     function f2(){
+        document.write("F2 : x=" + x + " y=" + y + " z=" + z + "<br>");
+        document.write("F2 : A=" + a);
+     }
+     f1();
+     f2();
+</script>
+
+var p  = 1000;                // bad coding
+var price = 4500;
+var empName  = "John";        // bad
+var employeeName = "David";  // good
+var  _productName; -->

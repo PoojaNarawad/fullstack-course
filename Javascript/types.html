@@ -1,0 +1,270 @@
+<!-- 1. JavaScript can refer HTML elements by using DOM hierarchy -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				window.document.images[0].src = '../images/ac.jpg';
+				window.document.forms[0].elements[0].value = 'Register';
+				window.document.forms[1].elements[1].value = 'Login';
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<div>
+			<img width="100" height="100" border="1" />
+		</div>
+		<div>
+			<form>
+				<h2>Register</h2>
+				Email :
+				<input type="button" />
+				<input type="email" />
+			</form>
+		</div>
+		<div>
+			<form>
+				<h2>Login</h2>
+				Mobile:
+				<input type="text" />
+				<input type="button" />
+			</form>
+		</div>
+	</body>
+</html>
+<br />
+
+<!-- JavaScript can refer HTML elements by using "name". -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				pic.src = '../images/ac.jpg';
+				frmRegister.btnRegister.value = 'Register';
+				frmLogin.btnLogin.value = 'Login';
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<div>
+			<img width="100" name="pic" height="100" border="1" />
+		</div>
+		<div>
+			<form name="frmRegister">
+				<h2>Register</h2>
+				Email :
+				<input type="button" name="btnRegister" />
+				<input type="email" />
+			</form>
+		</div>
+		<div>
+			<form name="frmLogin">
+				<h2>Login</h2>
+				Mobile:
+				<input type="text" />
+				<input type="button" name="btnLogin" />
+			</form>
+		</div>
+	</body>
+</html>
+
+<!-- 3. JavaScript can refer HTML elements by using their "id" reference. -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				document.getElementById('pic').src = '../images/ac.jpg';
+				document.getElementById('btnRegister').value = 'Register';
+				document.getElementById('btnLogin').value = 'Login';
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<div>
+			<img width="100" height="100" name="pic" id="pic" border="1" />
+		</div>
+		<div>
+			<form name="frmRegister">
+				<h2>Register</h2>
+				Email :
+				<input type="button" name="btnRegister" id="btnRegister" />
+				<input type="email" />
+			</form>
+		</div>
+		<div>
+			<form name="frmLogin">
+				<h2>Loign</h2>
+				Mobile :
+				<input type="button" name="btnLogin" id="btnLogin" />
+				<input type="text" />
+			</form>
+		</div>
+	</body>
+</html>
+
+<!-- 4. JavaScript can refer HTML elements by using CSS selectors. -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				document.querySelector('#pic').src = '..images/ac.jpg';
+				document.querySelector('.btn-register').value = 'Register';
+				document.querySelector('.btn-login').value = 'Login';
+				document.querySelector('p').innerHTML = 'Welcome to JavaScirpt';
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<p></p>
+		<div>
+			<img width="100" name="pic" id="pic" height="100" border="1" />
+		</div>
+		<div>
+			<form name="frmRegister">
+				<h2>Register</h2>
+				Email :
+
+				<input type="email" />
+				<input
+					type="button"
+					id="btnRegister"
+					class="btn-register"
+					name="btnRegister"
+				/>
+			</form>
+		</div>
+		<div>
+			<form name="frmLogin">
+				<h2>Login</h2>
+				Mobile:
+				<input type="button" id="btnLogin" class="btn-login" name="btnLogin" />
+				<input type="text" />
+			</form>
+		</div>
+	</body>
+</html>
+
+<!-- 5. JavaScript allows to access multiple elements by using -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				forms = document.getElementsByTagName('form');
+				alert(`Total Number of Forms : ${forms.length}`);
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<p></p>
+		<div>
+			<img width="100" name="pic" id="pic" height="100" border="1" />
+		</div>
+		<div>
+			<form name="frmRegister">
+				<h2>Register</h2>
+				Email :
+
+				<input type="email" />
+				<input
+					type="button"
+					id="btnRegister"
+					class="btn-register"
+					name="btnRegister"
+				/>
+			</form>
+		</div>
+		<div>
+			<form name="frmLogin">
+				<h2>Login</h2>
+				Mobile:
+				<input type="button" id="btnLogin" name="btnLogin" />
+				<input type="text" />
+			</form>
+		</div>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				forms = document.getElementsByClassName('btn-primary');
+				alert(`Total Number of Elements using primary class : ${forms.length}`);
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<p></p>
+		<div>
+			<img width="100" name="pic" id="pic" height="100" border="1" />
+		</div>
+		<div>
+			<form name="frmRegister">
+				<h2>Register</h2>
+				Email :
+
+				<input type="email" />
+				<input
+					type="button"
+					id="btnRegister"
+					class="btn-primary"
+					name="btnRegister"
+				/>
+			</form>
+		</div>
+		<div>
+			<form name="frmLogin">
+				<h2>Login</h2>
+				Mobile:
+				<input
+					type="button"
+					class="btn-primary"
+					id="btnLogin"
+					name="btnLogin"
+				/>
+				<input type="text" />
+			</form>
+		</div>
+		<div>
+			<button class="btn-primary">Submit</button>
+			<button class="btn-danger">Reset</button>
+		</div>
+	</body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function bodyloady() {
+				forms = document.getElementsByName('pay');
+				alert(`Total Number of Payment methods : ${forms.length}`);
+			}
+		</script>
+	</head>
+	<body onload="bodyloady()">
+		<fieldset>
+			<legend>Payment</legend>
+			<input type="radio" name="pay" /> Cash
+			<input type="radio" name="pay" /> UPI
+			<input type="radio" name="pay" /> Credit Card
+			<input type="radio" name="pay" /> Debit Card
+		</fieldset>
+	</body>
+</html>

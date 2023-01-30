@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ATM PIN</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<style>
+			body {
+				background-color: antiquewhite;
+			}
+			.container {
+				display: flex;
+				justify-content: center;
+				margin-top: 180px;
+				background-color: rgb(196, 175, 216);
+				border: 2px solid purple;
+				padding: 50px;
+			}
+		</style>
+		<script>
+			var count = 2;
+			const correctPin = 223344;
+			function buttonclick() {
+				var pin = document.getElementById('pin').value;
+				pin = parseInt(pin);
+				var showText = document.getElementById('showText');
+				if (pin === correctPin) {
+					showText.innerHTML = 'Verified Successfully'.fontcolor('green');
+				} else if (count == 0) {
+					showText.innerHTML = 'Invalid Pin.You Have Been Blocked'.fontcolor(
+						'red'
+					);
+					document.getElementById('button').disabled = true;
+					document.getElementById('pin').disabled = true;
+				} else {
+					showText.innerHTML =
+						'Wrong PinNumber.Please Enter Valid Pin'.fontcolor('red');
+					count = count - 1;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<div class="container">
+			<div>
+				<strong> ATM PIN :</strong>
+				<input
+					id="pin"
+					type="text"
+					max="6"
+					min="4"
+					placeholder="Enter Your Pin"
+				/>
+				<button onclick="buttonclick()" id="button" class="btn btn-secondary">
+					SUBMIT
+				</button>
+				<div id="showText"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,167 @@
+========== - String is a literal with group of chars, which include alpha
+numeric and special chars. - JavaScript string literal can be enclosed in a)
+Single Quote ' ' b) Double Quote " " c) Back Tick ` ` - Single and Double quotes
+are used in configuring outer and inner string. "outer string 'inner string' "
+'outer string "inner string" ' var link = "<a href="home.html"> Home </a>"; var
+link = '<a href="home.html"></a>'; - Expression with single and double quote
+requires lot of concatination. Ex:
+<script>
+	var username = 'John';
+	var age = 22;
+	document.write(
+		'Hello !' +
+			' ' +
+			username +
+			' ' +
+			'you will be' +
+			' ' +
+			(age + 1) +
+			' ' +
+			'next year.<br>'
+	);
+</script>
+
+- ES5 introduced "back tick" which represents a string with embedded expression.
+` ` string ${ } expression embedded - Embedded expression is not allowed in
+single and double quote. "string ${ }" invalid 'string ${ }' invalid `string ${
+}` valid - Back tick allows to design templates. - Template comprises
+presentation and logic integrated into one unit. Ex:
+<script>
+	var username = 'John';
+	var age = 22;
+	document.write(
+		'Hello !' +
+			' ' +
+			username +
+			' ' +
+			'you will be' +
+			' ' +
+			(age + 1) +
+			' ' +
+			'next year.<br>'
+	);
+
+	document.write(`Hello ! ${username} you will be ${age + 1} next year.`);
+</script>
+
+- Inner string in back tick can be defined with single or double quote. Ex:
+<script>
+	var productName = 'Samsung TV';
+	var productPrice = 56000.44;
+	document.write(`
+       <h2>Product Details</h2>
+       <dl>
+          <dt>Name</dt>
+          <dd>${productName}</dd>
+          <dd><input type="text" value=${productName}></dd>
+          <dt>Price</dt>
+          <dd>${productPrice}</dd>
+       </dl>
+   `);
+</script>
+
+Escape Sequence ============== - String is a literal that can allow various
+special chars. - But some special chars escape printing, we call them as
+non-printing chars. - Any non-printable character can be printed by using "\".
+Syntax: var path = "d:\images\car.jpg"; o/p: d:imagescar.jpg var path =
+"d:\\images\\car.jpg; o/p: d:\images\car.jpg String Formatting ============= -
+You can format a string dynamically by using 2 techniques a) Styles b)
+JavaScript String formatting methods Formatting with styles: ================= -
+You have to access element and add style property
+document.getElementById("p1").style.color = "red"; .style.fontSize="30px"; Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Format</title>
+		<script>
+			function SubmitClick() {
+				var username = document.getElementById('UserName').value;
+				var lblUserName = document.getElementById('lblUserName');
+				if (username == '') {
+					lblUserName.innerHTML = 'Please Provide User Name';
+					lblUserName.style.color = 'red';
+				} else {
+					document.write(`Hello ! ${username}`);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<dl>
+			<dt>User Name</dt>
+			<dd><input type="text" id="UserName" /></dd>
+			<dd id="lblUserName"></dd>
+		</dl>
+		<button onclick="SubmitClick()">Submit</button>
+	</body>
+</html>
+
+Formatting with JavaScript string formatting methods:
+======================================== - They can directly apply formats on
+string without CSS model. - They use HTML DOM for formatting. - They use HTML
+elements for formatting implicitly. - JavaScript string format is limited in
+formats like fontcolor() fontsize() bold() italic() underline() sup() sub()
+toUpperCase() toLowerCase() strike() Syntax:
+document.getElementById("p1").innerHTML = "string".fontcolor('red');
+
+<font color="red"> string </font>
+
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Format</title>
+		<script>
+			function SubmitClick() {
+				var username = document.getElementById('UserName').value;
+				var lblUserName = document.getElementById('lblUserName');
+				if (username == '') {
+					lblUserName.innerHTML = 'Please Provide User Name'.fontcolor('red');
+				} else {
+					document.write(`Hello ! ${username}`);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<dl>
+			<dt>User Name</dt>
+			<dd><input type="text" id="UserName" /></dd>
+			<dd id="lblUserName"></dd>
+		</dl>
+		<button onclick="SubmitClick()">Submit</button>
+	</body>
+</html>
+
+Ex: Multiple Styles lblUserName.innerHTML = "Please Provide User Name";
+lblUserName.style.color = 'red'; lblUserName.style.fontWeight = 'bold'; Ex:
+Multiple Formats lblUserName.innerHTML = "Please Provide User
+Name".fontcolor('red').bold().italics(); onclick - when button clicked onkeyup -
+for every character [key up] onblur - lost focus Note: JavaScript string format
+can't be applied on RC data type elements. Ex: Change Case Dynamically
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Format</title>
+		<script>
+			function ChangeCase() {
+				var username = document.getElementById('UserName').value;
+				document.getElementById('UserName').value = username.toUpperCase();
+			}
+		</script>
+	</head>
+	<body>
+		<dl>
+			<dt>User Name</dt>
+			<dd>
+				<input
+					type="text"
+					onkeyup="ChangeCase()"
+					id="UserName"
+					placeholder="Name in Block Letters"
+				/>
+			</dd>
+		</dl>
+	</body>
+</html>

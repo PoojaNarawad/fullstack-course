@@ -1,0 +1,229 @@
+<script>
+	var notificationsMap = new Map();
+	notificationsMap.set(5, '5 Missed Calls');
+	notificationsMap.set(2, '2 Software Updates');
+	notificationsMap.set('Appointment', 'You have meeting at 5 PM');
+
+	document.write(
+		`Your Appointment Reminder: ${notificationsMap.get('Appointment')}`
+	);
+</script>
+
+Ex: Reading Keys and Values from Object
+
+<script>
+	var product = {
+		Name: 'TV',
+		Price: 67000.44,
+		Stock: true,
+	};
+	for (var property in product) {
+		document.write(`${property} : ${product[property]}<br>`);
+	}
+</script>
+
+Ex: Reading Keys, values and entried from Map
+
+<script>
+	var notificationsMap = new Map();
+	notificationsMap.set(5, '5 Missed Calls');
+	notificationsMap.set(2, '2 Software Updates');
+	notificationsMap.set('Appointment', 'You have meeting at 5 PM');
+
+	for (var item of notificationsMap.entries()) {
+		document.write(item + '<br>');
+	}
+</script>
+
+FAQ: Can we delete a property of any object? Ans: Yes. By using "delete"
+operator Syntax: delete object.property; 6. delete() : It is a built-in method
+used to delete any key. Syntax: mapName.delete(key); 7. clear() : It is used to
+delete all entries. Syntax: mapName.clear(); 8. has() : It is used to verify the
+key availability. It is a boolean method that returns true if given key is
+available. Syntax: if(mapName.has(key)) { } Ex:
+<script>
+	var notificationsMap = new Map();
+	notificationsMap.set(5, '5 Missed Calls');
+	notificationsMap.set(2, '2 Software Updates');
+	notificationsMap.set('Appointment', 'You have meeting at 5 PM');
+
+	if (notificationsMap.has(2)) {
+		document.write(notificationsMap.get(2));
+	} else {
+		document.write('2 - Not found');
+	}
+</script>
+
+FAQ: How object verifies the keys? Ans : By using "in" operator Syntax:
+"Property" in Object = true /false Ex:
+<script>
+	var product = {
+		Name: 'TV',
+		Price: 67000.44,
+		Stock: true,
+	};
+	delete product.Price;
+	if ('Price' in product) {
+		document.write(
+			`Name=${product.Name}<br>Price=${product.Price}<br>Stock=${product.Stock}`
+		);
+	} else {
+		document.write(`Name=${product.Name}<br>Stock=${product.Stock}`);
+	}
+</script>
+
+9. size : It returns the length of keys Syntax: mapName.size; Ex: Get Count of
+Keys in Object
+
+<script>
+	var product = {
+		Name: 'TV',
+		Price: 67000.44,
+		Stock: true,
+	};
+	var keys = [];
+	for (var property in product) {
+		keys.push(property);
+	}
+	console.log(keys.length);
+</script>
+
+Ex: Current Date and Time
+<script>
+	var Name = 'Samsung TV';
+	var Price = 56000.44;
+	var Manufactured = new Date();
+	document.write(`
+      Name : ${Name} <br>
+      Price: ${Price} <br>
+      Manufactured: ${Manufactured}
+    `);
+</script>
+
+Ex: Specific Date and Time
+
+<script>
+	var Name = 'Samsung TV';
+	var Price = 56000.44;
+	var Manufactured = new Date('2022-01-20 16:20');
+	document.write(`
+      Name : ${Name} <br>
+      Price: ${Price} <br>
+      Manufactured: ${Manufactured}
+    `);
+</script>
+
+JavaScript Date and Time Methods to Access Date & Time
+-------------------------------------------------------------------------------
+getHours() : It returns the hours number in 24 hr format getMinutes() : It
+returns minutes number 0-59 getSeconds() : It returns seconds number 0-59
+getMilliSeconds() : It returns milli seconds 0-99 1000 - 1sec - CPU Clock 100 -
+1sec - System Clock getDate() : It returns date number 20-01-2022 date = 20
+getMonth() : It returns the month number 0 = January getDay() : It returns the
+weekday number 0 = Sunday 1 = Monday getYear() : It returns the year number in 2
+digits [obsolete - no longer in use] getFullYear() : It returns the year number
+in 4 digits toLocaleDateString() : It returns only date toLocaleTimeString(): It
+returns only time Ex:
+<script>
+	var Name = 'Samsung TV';
+	var Price = 56000.44;
+	var Manufactured = new Date('2022-01-20 16:20');
+	document.write(`
+      Name : ${Name} <br>
+      Price: ${Price} <br>
+      Manufactured: ${Manufactured.toLocaleTimeString()}
+    `);
+</script>
+
+Ex: Printing Date or Time in desired format
+
+<script>
+	var Manufactured = new Date('2022-01-20 16:20');
+	var days = ['Sunday', 'Monday', 'Tue', 'Wed', 'Thursday', 'Fri', 'Sat'];
+	var months = ['January', 'Feb', 'March', 'Apr'];
+	document.write(`
+        Manufactured Date   : ${Manufactured.getDate()} <br>
+        Manufactured Month  : ${months[Manufactured.getMonth()]} <br>
+        Weekday             : ${days[Manufactured.getDay()]} <br>
+        Year                : ${Manufactured.getFullYear()} <br>
+        ${days[Manufactured.getDay()]}, ${Manufactured.getDate()}-${
+		months[Manufactured.getMonth()]
+	}-${Manufactured.getFullYear()}
+    `);
+</script>
+
+Ex: Display Date and Time
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Date</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			function PrintTime() {
+				var now = new Date();
+				document.getElementById('time').innerHTML = now.toLocaleTimeString();
+			}
+			function StatusMessage() {
+				var now = new Date();
+				var hrs = now.getHours();
+				var msg = document.getElementById('msg');
+				var icon = document.getElementById('icon');
+				if (hrs >= 00 && hrs <= 12) {
+					msg.innerHTML = 'Good Morning';
+				} else if (hrs > 12 && hrs <= 18) {
+					msg.innerHTML = 'Good Afternoon';
+					icon.className = 'bi bi-brightness-alt-high';
+				} else if (hrs > 18 && hrs <= 23) {
+					msg.innerHTML = 'Good Evening';
+				}
+			}
+			function bodyload() {
+				StatusMessage();
+				setInterval(PrintTime, 1000);
+				var now = new Date();
+				var months = ['January', 'Feb', 'March'];
+				var days = ['Sunday', 'Monday', 'Tuesday'];
+
+				document.getElementById('clock').innerHTML = `
+                   ${now.getDate()} - ${
+					months[now.getMonth()]
+				} - ${now.getFullYear()}  
+                `;
+			}
+		</script>
+	</head>
+	<body onload="bodyload()" class="container-fluid">
+		<nav class="btn-toolbar justify-content-between bg-danger mt-2">
+			<div class="btn-group">
+				<button class="btn btn-danger">Home</button>
+				<button class="btn btn-danger">About</button>
+				<button class="btn btn-danger">Contact</button>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-danger">
+					<span id="icon"></span>
+					<span id="msg"></span>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button class="btn btn-danger"><span id="clock"></span></button>
+				<button class="btn btn-danger"><span id="time"></span></button>
+			</div>
+		</nav>
+	</body>
+</html>
+
+JavaScript methods to set date and time:
+------------------------------------------------------- setHours() setMinutes()
+setSeconds() setMilliSeconds() setDate() setMonth() setFullYear() Syntax: var
+now = new Date(); now.setMonth(0); now.setDate(22); Note : Timer Event
+"setInterval()" is used to execute any specified task at regular time interval.
+Syntax: setInterval(functionName, timeInterval); setInterval(setTime, 1000);

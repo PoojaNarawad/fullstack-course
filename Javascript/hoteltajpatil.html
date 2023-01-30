@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hotel|TajPatil|BookRooms|Nanded</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<style>
+			body {
+				background-color: pink;
+			}
+			header {
+				font-size: 40px;
+				background-color: blanchedalmond;
+				padding: 10px;
+				height: 150px;
+			}
+			.nav {
+				font-size: 20px;
+			}
+		</style>
+		<script>
+			function OrderClick() {
+				document.getElementById('lblName').innerHTML =
+					document.getElementById('txtName').value;
+				document.getElementById('lblDate').innerHTML =
+					document.getElementById('txtDate').value;
+				document.getElementById('lblDays').innerHTML =
+					document.getElementById('txtDays').value;
+				document.getElementById('lblPersons').innerHTML =
+					document.getElementById('txtPersons').value;
+
+				var roomName;
+				var roomCost;
+
+				var suitroom = document.getElementById('suitroom');
+				var deluxroom = document.getElementById('deluxroom');
+
+				if (suitroom.checked == true) {
+					roomName = suitroom.value;
+					roomCost = 4000;
+				}
+
+				if (deluxroom.checked == true) {
+					roomName = deluxroom.value;
+					roomCost = 2500;
+				}
+
+				var amenetiesName = '';
+				var amenetiesCost;
+
+				var optAC = document.getElementById('optAC');
+				var optLocker = document.getElementById('optLocker');
+
+				if (optAC.checked == true) {
+					amenetiesCost = 1000;
+					amenetiesName += optAC.value + '<br>';
+					roomCost = roomCost + amenetiesCost;
+				}
+
+				if (optLocker.checked == true) {
+					amenetiesCost = 500;
+					amenetiesName += optLocker.value + '<br>';
+					roomCost = roomCost + amenetiesCost;
+				}
+
+				document.getElementById('lblRoom').innerHTML = roomName;
+				document.getElementById('lblAmeneties').innerHTML = amenetiesName;
+				document.getElementById('lblTotal').innerHTML = roomCost;
+			}
+			function bodyload() {
+				document.getElementById('suitroom').checked = true;
+			}
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<div class="container-fluid">
+			<header>
+				PatilPlaza Restaurant
+				<div class="nav">
+					<nav
+						class="navbar navbar-light"
+						style="background-color: blanchedalmond"
+					>
+						Hotel|TajPatil|BookRooms|Nanded
+					</nav>
+				</div>
+			</header>
+			<section>
+				<div class="accordion" id="orderForm">
+					<!-- Customer Details -->
+					<div class="accordion-item">
+						<div class="accordion-header">
+							<button
+								data-bs-target="#customer"
+								data-bs-toggle="collapse"
+								class="btn btn-danger w-100"
+							>
+								Customer Info
+							</button>
+						</div>
+						<div
+							class="accordion-collapse collapse show"
+							id="customer"
+							data-bs-parent="#orderForm"
+						>
+							<div class="accordion-body">
+								<dl>
+									<dt>Customer Name</dt>
+									<dd>
+										<input type="text" class="form-control" id="txtName" />
+									</dd>
+									<dt>Check In Date</dt>
+									<dd>
+										<input type="text" class="form-control" id="txtDate" />
+									</dd>
+									<dt>Number Of Days</dt>
+									<dd>
+										<input type="text" class="form-control" id="txtDays" />
+									</dd>
+									<dt>Number Of Persons</dt>
+									<dd>
+										<input type="text" class="form-control" id="txtPersons" />
+									</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+
+					<!--Room Details-->
+					<div class="accordion-item" id="bookForm">
+						<div class="accordion-header">
+							<button
+								data-bs-target="#room"
+								data-bs-toggle="collapse"
+								class="btn btn-danger w-100"
+							>
+								Select Your Room Type
+							</button>
+						</div>
+						<div
+							class="accordion-collapse collapse"
+							id="room"
+							data-bs-parent="#bookForm"
+						>
+							<div class="accordion-body">
+								<div class="row">
+									<div class="col">
+										<div class="card">
+											<img
+												src="../images/room1.jpg"
+												height="200"
+												class="card-img-top"
+											/>
+											<div class="card-header">
+												<h2>Suit Room</h2>
+											</div>
+											<div class="card-body">
+												<p>
+													<input
+														type="radio"
+														id="suitroom"
+														name="room"
+														value="Suit Room"
+														class="form-check-input"
+													/>
+													&#8377; 4000/-
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="card">
+											<img
+												src="../images/room2.jpg"
+												height="200"
+												class="card-img-top"
+											/>
+											<div class="card-header">
+												<h2>Delux Room</h2>
+											</div>
+											<div class="card-body">
+												<p>
+													<input
+														type="radio"
+														id="deluxroom"
+														name="room"
+														value="Delux Room"
+														class="form-check-input"
+													/>
+													&#8377; 2500/-
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--Ameneties -->
+
+					<div class="accordion-item" id="bookForm">
+						<div class="accordion-header">
+							<button
+								data-bs-target="#ameneties"
+								data-bs-toggle="collapse"
+								class="btn btn-danger w-100"
+							>
+								Select Amenities
+							</button>
+						</div>
+						<div
+							class="accordion-collapse collapse"
+							id="ameneties"
+							data-bs-parent="#bookForm"
+						>
+							<div class="accordion-body">
+								<div class="row">
+									<div class="col">
+										<div class="card">
+											<img
+												src="../images/ac.jpg"
+												height="200"
+												class="card-img-top"
+											/>
+											<div class="card-header">
+												<h2>A/C</h2>
+											</div>
+											<div class="card-body">
+												<p>
+													<input
+														id="optAC"
+														class="form-check-input"
+														value="AC"
+														type="checkbox"
+													/>
+													1000
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col">
+										<div class="card">
+											<img
+												src="../images/locker.png"
+												height="200"
+												class="card-img-top"
+											/>
+											<div class="card-header">
+												<h2>Locker</h2>
+											</div>
+											<div class="card-body">
+												<p>
+													<input
+														type="checkbox"
+														id="optLocker"
+														class="form-check-input"
+														value="Locker"
+													/>
+													500
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button
+						class="btn btn-danger w-100"
+						data-bs-target="#billsummary"
+						data-bs-toggle="modal"
+						onclick="OrderClick()"
+					>
+						Place Order
+					</button>
+					<div class="modal fade" id="billsummary">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3>Bill Summary</h3>
+									<button class="btn-close" data-bs-dismiss="model"></button>
+								</div>
+								<div class="modal-body">
+									<dl class="row">
+										<dt class="col-3">Customer Name</dt>
+										<dd class="col-9" id="lblName"></dd>
+										<dt class="col-3">Check In Date</dt>
+										<dd class="col-9" id="lblDate"></dd>
+										<dt class="col-3">Number Of Days</dt>
+										<dd class="col-9" id="lblDays"></dd>
+										<dt class="col-3">Number Of Persons</dt>
+										<dd class="col-9" id="lblPersons"></dd>
+										<dt class="col-3">Rooms</dt>
+										<dd class="col-9" id="lblRoom"></dd>
+										<dt class="col-3">Ameneties</dt>
+										<dd class="col-9" id="lblAmeneties"></dd>
+										<dt class="col-3">Total</dt>
+										<dd class="col-9" id="lblTotal"></dd>
+									</dl>
+								</div>
+								<div class="modal-footer">
+									<button data-bs-dismiss="modal" class="btn btn-success">
+										OK
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Recurrsion</title>
+		<script>
+			function printNumber(n) {
+				if (n === 0) {
+					return 1;
+				} else {
+					printNumber(n - 1);
+				}
+				document.write(n + '<br>');
+			}
+			printNumber(10);
+		</script>
+
+		<script>
+			function printSum(sum) {
+				if (sum == 0) {
+					return 1;
+				} else {
+					return sum + printSum(sum - 1);
+				}
+			}
+			document.write(`${printSum(10)}`);
+		</script>
+	</head>
+	<body></body>
+</html>

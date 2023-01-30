@@ -1,0 +1,432 @@
+<!-- Ex: match()  & length -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Format</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			function RegisterClick() {
+				var username = document.getElementById('UserName').value;
+				var userError = document.getElementById('UserError');
+				if (username == '') {
+					userError.innerHTML = 'User Name Required'.fontcolor('red');
+				}
+			}
+			function VerifyUserName() {
+				var username = document.getElementById('UserName').value;
+				var userError = document.getElementById('UserError');
+				var registerButton = document.querySelector('button');
+				if (username == '') {
+					userError.innerHTML = 'User Name Required'.fontcolor('red');
+					registerButton.disabled = true;
+				} else {
+					userError.innerHTML = '';
+					registerButton.disabled = false;
+				}
+			}
+			function VerifyPassword() {
+				var password = document.getElementById('Password').value;
+				var passwordError = document.getElementById('PasswordError');
+				var regExp = /(?=.*[A-Z])\w{4,10}/;
+				if (password.match(regExp)) {
+					passwordError.innerHTML = 'Strong Password'.fontcolor('green');
+				} else {
+					if (password.length < 4) {
+						passwordError.innerHTML = 'Poor Password'.fontcolor('red');
+					} else {
+						passwordError.innerHTML = 'Weak Password'.fontcolor('orange');
+					}
+				}
+			}
+			function VerifyMobile() {
+				var mobile = document.getElementById('Mobile').value;
+				var mobileError = document.getElementById('MobileError');
+				var regExp = /\+91[0-9]{10}/;
+				if (mobile.match(regExp)) {
+					mobileError.innerHTML = '';
+				} else {
+					mobileError.innerHTML =
+						'Invalid Mobile : +91 with 10 digits'.fontcolor('red');
+				}
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<h2>Register User</h2>
+		<dl>
+			<dt>User Name</dt>
+			<dd><input type="text" id="UserName" onblur="VerifyUserName()" /></dd>
+			<dd id="UserError"></dd>
+			<dt>Password</dt>
+			<dd>
+				<input type="password" onkeyup="VerifyPassword()" id="Password" />
+			</dd>
+			<dd id="PasswordError"></dd>
+			<dt>Mobile</dt>
+			<dd><input type="text" onblur="VerifyMobile()" id="Mobile" /></dd>
+			<dd id="MobileError"></dd>
+		</dl>
+		<button onclick="RegisterClick()">Register</button>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Format</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			function RegisterClick() {
+				var username = document.getElementById('UserName').value;
+				var userError = document.getElementById('UserError');
+				if (username == '') {
+					userError.innerHTML = 'User Name Required'.fontcolor('red');
+				}
+			}
+			function VerifyUserName() {
+				var username = document.getElementById('UserName').value;
+				var userError = document.getElementById('UserError');
+				var registerButton = document.querySelector('button');
+				if (username == '') {
+					userError.innerHTML = 'User Name Required'.fontcolor('red');
+					registerButton.disabled = true;
+				} else {
+					userError.innerHTML = '';
+					registerButton.disabled = false;
+				}
+			}
+			function VerifyPassword() {
+				var password = document.getElementById('Password').value;
+				var passwordError = document.getElementById('PasswordError');
+				var regExp = /(?=.*[A-Z])\w{4,10}/;
+				if (password.match(regExp)) {
+					passwordError.innerHTML = 'Strong Password'.fontcolor('green');
+				} else {
+					if (password.length < 4) {
+						passwordError.innerHTML = 'Poor Password'.fontcolor('red');
+					} else {
+						passwordError.innerHTML = 'Weak Password'.fontcolor('orange');
+					}
+				}
+			}
+			function VerifyMobile() {
+				var mobile = document.getElementById('Mobile').value;
+				var mobileError = document.getElementById('MobileError');
+				var regExp = /\+91[0-9]{10}/;
+				if (mobile.match(regExp)) {
+					mobileError.innerHTML = '';
+				} else {
+					mobileError.innerHTML =
+						'Invalid Mobile : +91 with 10 digits'.fontcolor('red');
+				}
+			}
+			function CheckUserCase() {
+				var username = document.getElementById('UserName').value;
+				var firstCharCode = username.charCodeAt(0);
+				var userError = document.getElementById('UserError');
+				if (firstCharCode >= 65 && firstCharCode <= 90) {
+					userError.innerHTML = '';
+				} else {
+					userError.innerHTML =
+						'Name must start with uppercase letter'.fontcolor('red');
+				}
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<h2>Register User</h2>
+		<dl>
+			<dt>User Name</dt>
+			<dd>
+				<input
+					type="text"
+					id="UserName"
+					onkeyup="CheckUserCase()"
+					onblur="VerifyUserName()"
+				/>
+			</dd>
+			<dd id="UserError"></dd>
+			<dt>Password</dt>
+			<dd>
+				<input type="password" onkeyup="VerifyPassword()" id="Password" />
+			</dd>
+			<dd id="PasswordError"></dd>
+			<dt>Mobile</dt>
+			<dd><input type="text" onblur="VerifyMobile()" id="Mobile" /></dd>
+			<dd id="MobileError"></dd>
+		</dl>
+		<button onclick="RegisterClick()">Register</button>
+	</body>
+</html>
+
+<!-- Ex: startsWith()  & endsWith() -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Format</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			function RegisterClick() {
+				var username = document.getElementById('UserName').value;
+				var userError = document.getElementById('UserError');
+				if (username == '') {
+					userError.innerHTML = 'User Name Required'.fontcolor('red');
+				}
+			}
+			function VerifyUserName() {
+				var username = document.getElementById('UserName').value;
+				var userError = document.getElementById('UserError');
+				var registerButton = document.querySelector('button');
+				if (username == '') {
+					userError.innerHTML = 'User Name Required'.fontcolor('red');
+					registerButton.disabled = true;
+				} else {
+					userError.innerHTML = '';
+					registerButton.disabled = false;
+				}
+			}
+			function VerifyPassword() {
+				var password = document.getElementById('Password').value;
+				var passwordError = document.getElementById('PasswordError');
+				var regExp = /(?=.*[A-Z])\w{4,10}/;
+				if (password.match(regExp)) {
+					passwordError.innerHTML = 'Strong Password'.fontcolor('green');
+				} else {
+					if (password.length < 4) {
+						passwordError.innerHTML = 'Poor Password'.fontcolor('red');
+					} else {
+						passwordError.innerHTML = 'Weak Password'.fontcolor('orange');
+					}
+				}
+			}
+			function VerifyMobile() {
+				var mobile = document.getElementById('Mobile').value;
+				var mobileError = document.getElementById('MobileError');
+				var regExp = /\+91[0-9]{10}/;
+				if (mobile.match(regExp)) {
+					mobileError.innerHTML = '';
+				} else {
+					mobileError.innerHTML =
+						'Invalid Mobile : +91 with 10 digits'.fontcolor('red');
+				}
+			}
+			function CheckUserCase() {
+				var username = document.getElementById('UserName').value;
+				var firstCharCode = username.charCodeAt(0);
+				var userError = document.getElementById('UserError');
+				if (firstCharCode >= 65 && firstCharCode <= 90) {
+					userError.innerHTML = '';
+				} else {
+					userError.innerHTML =
+						'Name must start with uppercase letter'.fontcolor('red');
+				}
+			}
+			function VerifyCard() {
+				var cardnumber = document.getElementById('CreditCard').value;
+				var cardimage = document.getElementById('CardImage');
+				var cardtype = document.getElementById('CardType');
+				cardtype.style.display = 'inline';
+				if (cardnumber.startsWith('4444')) {
+					cardimage.src = '../public/images/master.png';
+				} else if (cardnumber.startsWith('5555')) {
+					cardimage.src = '../public/images/visa.png';
+				} else {
+					cardtype.style.display = 'none';
+				}
+			}
+			function VerifyEmail() {
+				var email = document.getElementById('Email').value;
+				var emailError = document.getElementById('EmailError');
+				if (email.endsWith('outlook.com')) {
+					emailError.innerHTML = '';
+				} else {
+					emailError.innerHTML = 'Only Microsoft Account Allowed'.fontcolor(
+						'red'
+					);
+				}
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<h2>Register User</h2>
+		<dl>
+			<dt>User Name</dt>
+			<dd>
+				<input
+					type="text"
+					id="UserName"
+					onkeyup="CheckUserCase()"
+					onblur="VerifyUserName()"
+				/>
+			</dd>
+			<dd id="UserError"></dd>
+			<dt>Password</dt>
+			<dd>
+				<input type="password" onkeyup="VerifyPassword()" id="Password" />
+			</dd>
+			<dd id="PasswordError"></dd>
+			<dt>Mobile</dt>
+			<dd><input type="text" onblur="VerifyMobile()" id="Mobile" /></dd>
+			<dd id="MobileError"></dd>
+			<dt>Credit Card Number</dt>
+			<dd class="input-group">
+				<input
+					type="text"
+					maxlength="16"
+					onkeyup="VerifyCard()"
+					id="CreditCard"
+				/>
+				<span style="display: none" id="CardType" class="input-group-text"
+					><img id="CardImage" width="90" height="31"
+				/></span>
+			</dd>
+			<dt>Your Microsoft Account</dt>
+			<dd>
+				<input onblur="VerifyEmail()" type="text" id="Email" />
+			</dd>
+			<dd id="EmailError"></dd>
+		</dl>
+		<button onclick="RegisterClick()">Register</button>
+	</body>
+</html>
+
+Ex: indexOf() and lastIndexOf()
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Demo</title>
+		<script>
+			function RegisterClick() {
+				var email = document.getElementById('Email').value;
+				var emailError = document.getElementById('EmailError');
+				if (email.indexOf('@') < 2) {
+					emailError.innerHTML =
+						'Please Include @ with atleast 2 chars prefix in Email'.fontcolor(
+							'red'
+						);
+				} else {
+					document.write(
+						`Welcome ${email.substring(
+							email.indexOf('@'),
+							0
+						)} <br> You successfully registered at our domain ${email.substring(
+							email.indexOf('@') + 1
+						)}`
+					);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Register</h2>
+		<dl>
+			<dt>Email</dt>
+			<dd><input type="text" id="Email" /></dd>
+			<dd id="EmailError"></dd>
+		</dl>
+		<button onclick="RegisterClick()">Register</button>
+	</body>
+</html>
+
+Ex: lastIndexOf() - returns the last occurance index number of given char/word.
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Demo</title>
+		<script>
+			function RegisterClick() {
+				var email = document.getElementById('Email').value;
+				var emailError = document.getElementById('EmailError');
+				if (email.indexOf('@') < 2) {
+					emailError.innerHTML =
+						'Please Include @ with atleast 2 chars prefix in Email'.fontcolor(
+							'red'
+						);
+				} else {
+					document.write(
+						`Welcome ${email.substring(
+							email.indexOf('@'),
+							0
+						)} <br> You successfully registered at our domain ${email.substring(
+							email.indexOf('@') + 1
+						)}<br> Our Domain Extentions is ${email.substring(
+							email.lastIndexOf('.')
+						)}`
+					);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Register</h2>
+		<dl>
+			<dt>Email</dt>
+			<dd><input type="text" id="Email" /></dd>
+			<dd id="EmailError"></dd>
+		</dl>
+		<button onclick="RegisterClick()">Register</button>
+	</body>
+</html>
+
+Ex: trim() , split() trim() remove the leading spaces in a string. [space before
+and after]
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>String Demo</title>
+		<script>
+			function RegisterClick() {
+				var password = document.getElementById('Password').value;
+				var pwdError = document.getElementById('PasswordError');
+				if (password.trim() == 'admin123') {
+					document.write('Register Successful..');
+				} else {
+					pwdError.innerHTML = 'Invalid Password';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Register</h2>
+		<dl>
+			<dt>Password</dt>
+			<dd><input type="text" id="Password" /></dd>
+			<dd id="PasswordError"></dd>
+		</dl>
+		<button onclick="RegisterClick()">Register</button>
+	</body>
+</html>
+
+split() : It splits the string at sepcified delimeter and returns an array. Ex:
+<script>
+	var contacts = 'Ajay-995958324, John-8847477321';
+	var result = contacts.split(',');
+	document.write(`Send Message To  : ${result[0]}`);
+</script>
+
+Summary - String Type - String Formatting - String Manipulations 3. Boolean Type
+- Boolean value is used in decision making. - JavaScript boolean type can have
+"true" and "false". - JavaScript boolean types can handle numeric comparision.
+true = 1 false = 0 true + true = ? [2] true + false = 1 Ex:
+<script>
+	var stock = false;
+	if (stock == 1) {
+		document.write('Product Available');
+	} else {
+		document.write('Out of Stock');
+	}
+</script>

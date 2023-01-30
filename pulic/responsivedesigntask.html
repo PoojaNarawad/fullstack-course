@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RESPONSIVE DEIGN</title>
+    <style>
+      * {
+        box-sizing: borderbox;
+        font-size: 40px;
+        font: white;
+        font-weight: bold;
+        font-family: arial;
+        padding: 10px;
+        border: 1px solid black;
+      }
+
+      header {
+        height: 30px;
+        width: 100%px;
+        background-color: tomato;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      section {
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
+        height: 500px;
+        column-gap: 3px;
+      }
+
+      nav {
+        background-color: teal;
+      }
+
+      main {
+        background-color: teal;
+      }
+
+      aside {
+        background-color: teal;
+      }
+
+      footer {
+        background-color: tomato;
+      }
+
+      @media screen and (orientation: portrait) {
+        section {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>header</header>
+    <section>
+      <nav>nav</nav>
+      <main>main</main>
+      <aside>ads...</aside>
+    </section>
+    <footer>footer</footer>
+  </body>
+</html>

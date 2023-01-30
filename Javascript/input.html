@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Input</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			function RegisterClick() {
+				document.getElementById('DetailsContainer').style.display = 'block';
+				document.getElementById('lblName').innerText =
+					document.getElementById('ProductName').value;
+				document.getElementById('lblPrice').innerText =
+					document.getElementById('ProductPrice').value;
+				document.getElementById('lblCity').innerText =
+					document.getElementById('City').value;
+
+				stockCheckBox = document.getElementById('Stock');
+				statusFlag = '';
+				if (stockCheckBox.checked) {
+					statusFlag = 'Available';
+				} else {
+					statusFlag = 'Out of Stock';
+				}
+				document.getElementById('lblStock').innerText = statusFlag;
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<div class="mt-2">
+			<button
+				data-bs-toggle="modal"
+				data-bs-target="#register"
+				class="btn btn-primary"
+			>
+				Register Product
+			</button>
+		</div>
+		<div class="modal fade" id="register">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h2>Register Product</h2>
+						<button data-bs-dismiss="modal" class="btn-close"></button>
+					</div>
+					<div class="modal-body">
+						<dl>
+							<dt>Name</dt>
+							<dd>
+								<input id="ProductName" class="form-control" type="text" />
+							</dd>
+							<dt>Price</dt>
+							<dd>
+								<input type="text" class="form-control" id="ProductPrice" />
+							</dd>
+							<dt>Shipped To</dt>
+							<dd>
+								<select class="form-select" id="City">
+									<option value="Delhi">Delhi</option>
+									<option value="Hyderabad">Hyd</option>
+								</select>
+							</dd>
+							<dt>Stock</dt>
+							<dd class="form-switch">
+								<input type="checkbox" id="Stock" class="form-check-input" />
+								Available
+							</dd>
+						</dl>
+					</div>
+					<div class="modal-footer">
+						<button
+							onclick="RegisterClick()"
+							data-bs-dismiss="modal"
+							class="btn btn-primary"
+						>
+							Register
+						</button>
+						<button data-bs-dismiss="modal" class="btn btn-danger">
+							Cancel
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="DetailsContainer" class="mt-3" style="display: none">
+			<h3>Product Details</h3>
+			<dl class="row">
+				<dt class="col-3">Name</dt>
+				<dd class="col-9" id="lblName"></dd>
+				<dt class="col-3">Price</dt>
+				<dd class="col-9" id="lblPrice"></dd>
+				<dt class="col-3">Shipped To</dt>
+				<dd class="col-9" id="lblCity"></dd>
+				<dt class="col-3">Stock</dt>
+				<dd class="col-9" id="lblStock"></dd>
+			</dl>
+			<div>
+				<a href="#register" data-bs-toggle="modal">Edit</a>
+			</div>
+		</div>
+		<script src="../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	</body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function DeleteClick() {
+				flag = confirm('Delete Record\nRecord Will be deleted permanently');
+				if (flag == true) {
+					alert('Record Deleted');
+				} else {
+					alert('You canceled..');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="DeleteClick()">Delete</button>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function DeleteClick() {
+				flag = confirm('Delete Record\nRecord Will be deleted permanently');
+				console.warn('Warning : Delete Clicked');
+				if (flag == true) {
+					alert('Record Deleted');
+					console.error('OK Clicked : Deleted Successfully..');
+				} else {
+					alert('You canceled..');
+					console.log('Cancel Clicked');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="DeleteClick()">Delete</button>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function DeleteClick() {
+				flag = confirm('Delete Record\nRecord Will be deleted permanently');
+				console.warn('Warning : Delete Clicked');
+				if (flag == true) {
+					document.write("<b><font color='red'>Record Deleted...</font></b>");
+				} else {
+					alert('You canceled..');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="DeleteClick()">Delete</button>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function DeleteClick() {
+				flag = confirm('Delete Record\nRecord Will be deleted permanently');
+				console.warn('Warning : Delete Clicked');
+				if (flag == true) {
+					document.querySelector('p').innerHTML = '<b>Record Deleted</b>';
+				} else {
+					document.querySelector('p').innerText = '<i>Canceled..</i>';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="DeleteClick()">Delete</button>
+		<p align="center"></p>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaScript</title>
+		<script>
+			function DeleteClick() {
+				flag = confirm('Delete Record\nRecord Will be deleted permanently');
+				console.warn('Warning : Delete Clicked');
+				if (flag == true) {
+					document.querySelector('p').outerHTML = '<div>Record Deleted</div>';
+				} else {
+					document.querySelector('p').innerText = '<i>Canceled..</i>';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="DeleteClick()">Delete</button>
+		<p align="center"></p>
+	</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Input</title>
+		<script>
+			function CreateClick() {
+				folder = prompt('Enter Folder Name');
+				document.querySelector('p').innerHTML +=
+					'Folder Created :' + folder + '<br>';
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="CreateClick()">Create new Folder</button>
+		<p></p>
+	</body>
+</html>

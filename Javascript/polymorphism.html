@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Using polymorphis Math Clculator</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<style>
+			body{
+                background-color: blueviolet;
+            }
+		</style>
+		<script>
+            function calculateClick() {
+                class calculateNumbers {
+                   printResult() {
+                    Num1=document.getElementById("num1").value;
+                    Num2=document.getElementById("num2").value;
+                   }
+                }
+                class addition extends calculateNumbers {
+                   print() {
+                        super.printResult();
+                        var Addition = Num1 + Num2 ;
+                        var Ouptput = document.getElementById("output").innerHTML=`The Addition Of Given Numbers="${Addition}`;
+                    }
+                }
+                class substraction extends calculateNumbers {
+                    print() {
+                        super.printResult();
+                        var Substraction = Num1 - Num2 ;
+                        var Ouptput = document.getElementById("output").innerHTML=`The Substraction Of Given Numbers="${Substraction}`;
+                    }
+                }
+                class multiplication extends calculateNumbers {
+                    print() {
+                        super.printResult();
+                        var Multiplication = Num1 * Num2 ;
+                        var Ouptput = document.getElementById("output").innerHTML=`The Multiplication Of Given Numbers="${Multiplication}`;
+                    }
+                }
+                class division extends calculateNumbers {
+                    printt() {
+                        super.printResult();
+                        var Division = Num1 / Num2 ;
+                        var Ouptput = document.getElementById("output").innerHTML=`The Division Of Given Numbers="${Division}`;
+                    }
+                }
+                Operation = document.getElementById("operation").value;
+                obj = [new Addition,new Substraction,new Multiplication,new Division];
+                // let obj = new division;
+                obj[Operation]. print();
+            }
+        </script>
+	</head>
+	<body class="container-fluid d-flex justify-content-center align-items-center">
+		<div class="mt-4 border border-2 border- p-4 w-50 justify-content-center align-items-center m-5 bg-warning">
+            <h3>Using polymorphism Math Calculator</h3>
+            <div class="form-control bg-danger">
+              Num1 :  <input type="text" id="num1" >
+            </br>
+            </br>
+               Num2 :  <input type="text" id="num2" >
+            </div>
+            <br>
+            <div class="form-control bg-info">
+                Select An Operation :
+                <select class="form-select w-25 mt-3 "  id="operation" required>
+                    <option value="0">addition</option>
+                    <option value="1">substraction</option>
+                    <option value="2">multiplication</option>
+                    <option value="3"> division</option>
+                </select>
+               
+            </div>
+            <button class="btn btn-primary mt-3 " onclick="calculateClick()">Calculate</button>
+            <div class=" text-dark p-2" id="output"> </div>
+            </div>
+	</body>
+
+    
+</html>
+
+
+
+
+<!-- 
+<script>
+    class Employee {
+        FirstName;
+        LastName;
+        Designation;
+        Print() {
+            document.write(
+                `${this.FirstName} ${this.LastName} - ${this.Designation} <br>`
+            );
+        }
+    }
+    class Developer extends Employee {
+        FirstName = 'Raj';
+        LastName = 'Kumar';
+        Designation = 'Developer';
+        Role = 'Developer role - Build, Debug, Testing, Deploying';
+        Print() {
+            super.Print();
+            document.write(`Role : ${this.Role}`);
+        }
+    }
+    class Admin extends Employee {
+        FirstName = 'Kiran';
+        LastName = 'Kumar';
+        Designation = 'Admin';
+        Role = 'Admin role - Authorization, Authentication';
+        Print() {
+            super.Print();
+            document.write(`Role : ${this.Role}`);
+        }
+    }
+    class Manager extends Employee {
+        FirstName = 'Tom';
+        LastName = 'Hanks';
+        Designation = 'Manager';
+        Role = 'Manager role - Approvalss';
+        Print() {
+            super.Print();
+            document.write(`Role : ${this.Role}`);
+        }
+    }
+
+    let employees = new Array(new Developer(), new Admin(), new Manager());
+    let designation = prompt('Enter Designation');
+    for (var employee of employees) {
+        if (employee.Designation == designation) {
+            employee.Print();
+        }
+    }
+</script> -->

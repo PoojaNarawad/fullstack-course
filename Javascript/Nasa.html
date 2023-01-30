@@ -1,0 +1,175 @@
+Nasa API [https://api.nasa.gov/]
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY
+Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NASA API</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<script>
+			function LoadClick() {
+				fetch(
+					'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY&quot'
+				)
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						for (var item of data.photos) {
+							var tr = document.createElement('tr');
+							var tdId = document.createElement('td');
+							var tdCameraName = document.createElement('td');
+							var tdPreview = document.createElement('td');
+							var tdRoverName = document.createElement('td');
+
+							tdId.innerHTML = item.id;
+							tdCameraName.innerHTML = `${item.camera.full_name}-[${item.camera.name}]`;
+							tdRoverName.innerHTML = item.rover.name;
+
+							var img = document.createElement('img');
+							img.src = item.img_src;
+							img.width = '200';
+							img.height = '200';
+
+							tdPreview.appendChild(img);
+
+							tr.appendChild(tdId);
+							tr.appendChild(tdCameraName);
+							tr.appendChild(tdPreview);
+							tr.appendChild(tdRoverName);
+
+							document.querySelector('tbody').appendChild(tr);
+						}
+					});
+			}
+		</script>
+	</head>
+	<body class="container-fluid">
+		<h2>
+			Mars Rover Photos
+			<button onclick="LoadClick()" class="btn btn-primary">
+				Load Details
+			</button>
+		</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Photo Id</th>
+					<th>Camera Name</th>
+					<th>Preview</th>
+					<th>Rover Name</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</body>
+</html>
+
+Nested Iterations ============= - You have to use an iterator with in the
+context of another iterator. - You can use nested loops for(initialization;
+condition; counter) { for(initialization; condition; counter) { } } - Loops
+require lot of iterations and conditions to verify. - Better use Iterators
+for(var item of collection) { for(var child of item.collection) { } } Ex:
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Nested Iterations</title>
+		<script>
+			function bodyload() {
+				fetch('../data/menu.json')
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						for (var item of data) {
+							var li = document.createElement('li');
+							li.innerHTML = item.Category;
+							document.querySelector('ol').appendChild(li);
+
+							var optgroup = document.createElement('optgroup');
+							optgroup.label = item.Category;
+
+							document.querySelector('select').appendChild(optgroup);
+
+							for (var product of item.Products) {
+								var ul = document.createElement('ul');
+								var childLi = document.createElement('li');
+								childLi.innerHTML = product;
+								ul.appendChild(childLi);
+								li.appendChild(ul);
+
+								var option = document.createElement('option');
+								option.text = product;
+								option.value = product;
+
+								optgroup.appendChild(option);
+							}
+						}
+					});
+			}
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<ol></ol>
+		<select></select>
+	</body>
+</html>
+
+Ex: Presenting content with Bootstrap Components : [Card]
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Catalog</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			function bodyload() {
+				fetch('http://fakestoreapi.com/products&quot')
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						for (var item of data) {
+							var div = document.createElement('div');
+							div.className = 'card m-2 p-2';
+							div.style.width = '200px';
+							div.innerHTML = `
+			             <img src=${item.image} height="200" class="card-img-top">
+			             <div class="card-header" style="height:140px">
+			                <p>${item.title}</p>
+			             </div>
+			             <div class="card-body">
+			                <dl>
+			                    <dt>Price</dt>
+			                    <dd>${item.price}</dd>
+			                    <dt>Rating</dt>
+			                    <dd> <span class="bi bi-star-fill text-success"></span> ${item.rating.rate}</dd>
+			                </dl>
+			             </div>
+			             <div class="card-footer">
+			                <button class="btn btn-danger w-100">
+			                    <span class="bi bi-cart4"></span>
+			                    Add to Cart
+			                </button>
+			             </div>
+			            `;
+							document.getElementById('catalog').appendChild(div);
+						}
+					});
+			}
+		</script>
+	</head>
+	<body onload="bodyload()" class="container-fluid">
+		<div id="catalog" class="d-flex flex-wrap"></div>
+	</body>
+</html>

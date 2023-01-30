@@ -1,0 +1,233 @@
+Ex:
+<script>
+	function PrintNumbers(startWith, howMany) {
+		for (var i = startWith; i <= howMany; i++) {
+			document.write(i + '<br>');
+		}
+	}
+	PrintNumbers(5, 10);
+</script>
+
+<script>
+	function PrintProduct(id, name, price) {
+		if (id == undefined) {
+			document.write(`Name=${name}<br>Price=${price}`);
+		} else {
+			document.write(`Id=${id}<br>Name=${name}<br>Price=${price}`);
+		}
+	}
+	PrintProduct(undefined, 'TV', 45000.44);
+</script>
+
+Ex:
+<script>
+	function PrintProduct(...productDetails) {
+		var [id, name, price, stock] = productDetails;
+		document.write(
+			`Id=${id}<br>Name=${name}<br>Price=${price}<br>Stock=${stock}`
+		);
+	}
+	PrintProduct(1, 'TV', 45000.44, true);
+</script>
+Ex:
+<script>
+	function PrintProduct(title, ...productDetails) {
+		var [id, name, price, stock] = productDetails;
+		document.write(`<h2>${title}</h2>`);
+		document.write(
+			`Id=${id}<br>Name=${name}<br>Price=${price}<br>Stock=${stock}`
+		);
+	}
+	PrintProduct('Product Details', 1, 'TV', 45000.44, true);
+</script>
+
+Ex:
+<script>
+	function PrintProduct(product) {
+		for (var property in product) {
+			document.write(`${property} : ${product[property]}<br>`);
+		}
+	}
+	PrintProduct({Name: 'Samsung TV', Price: 45600.44, Stock: true});
+	document.write('<hr>');
+	var shoe = {Name: 'Nike Casuals', Price: 24000.33, Stock: false};
+	PrintProduct(shoe);
+</script>
+
+Ex:
+<script>
+	function PrintList(list) {
+		for (var item of list) {
+			document.write(item + '<br>');
+		}
+	}
+	PrintList(['Electronics', 'Footwear', 'Fashion']);
+	document.write('<hr>');
+	PrintList(['John', 'David']);
+</script>
+
+Ex:
+<script>
+	function VerifyPassword(password, success, failure) {
+		if (password == 'admin') {
+			success();
+		} else {
+			failure();
+		}
+	}
+	VerifyPassword(
+		'admin',
+		function () {
+			document.write('Login Success..');
+		},
+		function () {
+			document.write('Invalid Password');
+		}
+	);
+</script>
+
+Ex:
+<script>
+	function addition(a, b) {
+		return a + b;
+	}
+	function hello(name) {
+		return `Hello ! ${name}`;
+	}
+	document.write(addition(30, 40) + '<br>' + hello('John'));
+</script>
+
+FAQ: Can a function have multiple returns configured? Ans: Yes. But it will not
+return all. It changes the return according to situation. A function can have
+mutliple return types. Ex:
+<script>
+	function PrintDetails(value) {
+		if (isNaN(value)) {
+			return `Hello ! ${value}`;
+		} else {
+			return (value = value + 1);
+		}
+	}
+	document.write(PrintDetails(22));
+</script>
+
+Ex:
+<script>
+	(function () {
+		document.write('Anonymous function');
+	})();
+</script>
+Ex:
+<script>
+	function Parent() {
+		var x = 10;
+		function Child() {
+			var y = 10;
+			y = ++x;
+			return y;
+		}
+		document.write(`x=${x}<br>y=${Child()}`);
+	}
+	Parent();
+</script>
+
+Ex:
+<script>
+	function Factorial(n) {
+		if (n == 0) {
+			return 1;
+		} else {
+			return n * Factorial(n - 1);
+		}
+	}
+	document.write(`Factorial of 7 is ${Factorial(7)}`);
+</script>
+
+Ex:
+<script>
+	var hello = (username) => `Hello ! ${username}`;
+	document.write(hello('John'));
+	/*
+         function hello(username)
+         {
+             return  `Hello ! ${username}`;
+         }
+    */
+</script>
+
+Ex:
+<script>
+	var addition = (a, b) => a + b;
+	document.write('Addition=' + addition(20, 40));
+</script>
+
+Ex:
+<script>
+	var Print = () => {
+		document.write('statement-1');
+		document.write('Statement-2');
+	};
+	Print();
+</script>
+
+Ex: Fetch Data from API
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Arrow</title>
+		<script>
+			var bodyload = () => {
+				fetch('http://fakestoreapi.com/products/categories&quot')
+					.then((response) => response.json())
+					.then((data) => {
+						for (var item of data) {
+							var li = document.createElement('li');
+							li.innerHTML = item;
+							document.querySelector('ol').appendChild(li);
+						}
+					});
+			};
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<ol></ol>
+	</body>
+</html>
+
+Ex: 1. products.json [ { "Name": "Neckband", "Price": 4500.44, "Category":
+"Electronics", "Photo": "../public/images/neckband.png" }, { "Name": "SONY
+Speaker", "Price": 5700.44, "Category": "Electronics", "Photo":
+"../public/images/speaker.jpg" }, { "Name": "Nike Casuals", "Price": 7300.44,
+"Category": "Footwear", "Photo": "../public/images/shoe.jpg" }, { "Name": "Lee
+Boot", "Price": 2400.44, "Category": "Footwear", "Photo":
+"../public/images/shoe1.jpg" }, { "Name": "Winter Jacket", "Price": 3500.44,
+"Category": "Fashion", "Photo": "../public/images/jacket.jpg" }, { "Name":
+"Backpack", "Price": 6200.44, "Category": "Fashion", "Photo":
+"../public/images/backpack.jpg" } ] 2. HTML page
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Arrow</title>
+		<script>
+			var bodyload = () => {
+				fetch('../data/products.json')
+					.then((response) => response.json())
+					.then((data) => {
+						var products = data.filter(
+							(product) => product.Category == 'Footwear'
+						);
+						for (var item of products) {
+							var li = document.createElement('li');
+							li.innerHTML = item.Name;
+							document.querySelector('ol').appendChild(li);
+						}
+					});
+			};
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<ol></ol>
+	</body>
+</html>

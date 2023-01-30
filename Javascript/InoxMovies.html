@@ -1,0 +1,214 @@
+<!-- InoxMovies toolbar -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Inox Movies</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<style>
+			body {
+				background-color: aquamarine;
+			}
+			header {
+				background-color: white;
+				padding: 5px;
+				margin: 20px;
+				display: flex;
+			}
+			
+			#nav {
+				margin-top: 30px;
+				margin-left: 40px;
+			}
+			menu {
+				display: flex;
+				justify-content: space-around;
+				background-color: black;
+				padding: 10px;
+				color: white;
+			}
+			select {
+				width: 200px;
+			}
+			#toolbar {
+				margin-left: 150px;
+				margin-right: 850px;
+				background-color: brown;
+				color: yellow;
+			}
+		</style>
+		<script>
+	
+		var movies = ['Select a movie','R R R (U/A)', 'The Kashmiri Files(A)','The Lost City(U/A)'];
+		var cinemas = ["Select a Cinema",'Inox MegaPlex,Inorbit Mall',	'Inox Nakshtra Mall,Dadar'];
+		var Date = ['Select Date','Today 7th April','Tomarrow 8th April','Saturday 9th April'];
+		var	Timing = ['Select Timing', '09:05AM', '11:05AM', '05:50PM'];
+		var	Seats = ['Select Seats', '1', '2', '4'];
+		        
+
+		function Loadmovies() {
+				var lstmovies = document.getElementById('lstMovies');
+				for (var item of movies) {
+					var option = document.createElement('option');
+					option.text = item;
+					option.value = item;
+					lstmovies.appendChild(option);
+				}
+			}
+		
+		function Loadcinemas() {
+				var lstcinemas = document.getElementById('lstCinemas');
+				for (var item of cinemas) {
+					var option = document.createElement('option');
+					option.text = item;
+					option.value = item;
+					lstCinemas.appendChild(option);
+				}
+			}
+		function LoadDate() {
+				var lstDates = document.getElementById('lstDates');
+				for (var item of Date) {
+					var option = document.createElement('option');
+					option.text = item;
+					option.value = item;
+					lstDates.appendChild(option);
+				}
+			}
+		function LoadTiming() {
+				var lstTiming = document.getElementById('lstTimings');
+				for (var item of Timing) {
+					var option = document.createElement('option');
+					option.text = item;
+					option.value = item;
+					lstTiming.appendChild(option);
+				}
+			}
+
+			function LoadSeats() {
+				var lstSeats = document.getElementById('lstSeats');
+				for (var item of Seats) {
+					var option = document.createElement('option');
+					option.text = item;
+					option.value = item;
+					lstSeats.appendChild(option);
+				}
+			}
+		
+
+			function MovieChanged() {
+				if(Loadmovies) {
+				Loadcinemas();
+				}
+			}
+			function CinemaChanged() {
+				if(Loadcinemas) {
+					LoadDate();
+				}
+			}
+			function DateChanged() {
+				if(LoadDate) {
+					LoadTiming();
+				}
+			}
+			function TimingChanged() {
+				if(LoadTiming) {
+					LoadSeats();
+				}
+			}
+			function SeatChanged() {
+				if(LoadSeats) {
+					buttonclick();
+				}
+			}
+		function buttonclick() {
+			
+		}
+			
+
+			function bodyload() {
+				Loadmovies();
+			}
+
+		</script>
+	</head>
+	<body onload="bodyload()">
+		<header class="container">
+			<div>
+				<img width="200" height="90" src="../images/INOX_Logo_Web.png" />
+			</div>
+			<div id="nav">
+				<strong>HOME |</strong>
+				<strong>CINEMAS |</strong>
+				<strong>SCHEDULES |</strong>
+				<strong>PROMOTIONS |</strong>
+				<strong>BULK BOOKING |</strong>
+				<strong>GIFTING |</strong>
+				<strong>ADVERTISE |</strong>
+				<strong>CORPORATE |</strong>
+				<strong>SAFTY |</strong>
+				<strong>ABOUT US</strong>
+			</div>
+		</header>
+		<section>
+			<div>
+				<img  width="95%" height="350" hspace="20" vspace="20" src="../images/mm11.jpg" />
+			</div>
+			
+			<div id="toolbar">
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				<b>Quick Booking |</b>&nbsp;
+				<b>By Movie  |</b>&nbsp;
+				<b>By Cinemas</b>
+			</div>
+			<menu class="container">
+				<div>
+					<label>Select Movie</label>
+					<div>
+						<select onChange="MovieChanged()" id="lstMovies"></select>
+					</div>
+				</div>
+				<div>
+					<label>Select Cinema</label>
+					<div>
+						<select onChange="CinemaChanged()" id="lstCinemas"></select>
+					</div>
+				</div>
+				<div>
+					<label>Select Date</label>
+					<div>
+						<select onChange="DateChanged()" id="lstDates"></select>
+					</div>
+				</div>
+				<div>
+					<label>Select Timings</label>
+					<div>
+						<select onChange="TimingChanged()" id="lstTimings"></select>
+					</div>
+				</div>
+				<div>
+					<label>Select Seats</label>
+					<div>
+						<select onChange="SeatChanged()" id="lstSeats"></select>
+					</div>
+				</div>
+				<div>
+					<button onclick="buttonclick()" class="btn btn-danger">Book</button>
+				</div>
+				
+		</section>
+		<script src="../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+	</body>
+</html>

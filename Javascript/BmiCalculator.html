@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bmi Calculate</title>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap/dist/css/bootstrap.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+		/>
+		<script>
+			function Calculate() {
+				var height = document.getElementById('height').value;
+				var weight = document.getElementById('weight').value;
+
+				var result = parseFloat(weight) / (parseFloat(height) / 100) ** 2;
+
+				if (!isNaN(result)) {
+					document.getElementById('bmi-output').innerHTML = result;
+					if (result < 18.5) {
+						document.getElementById('bmi-status').innerHTML = 'Underweight';
+					} else if (result < 25) {
+						document.getElementById('bmi-status').innerHTML = 'Healthy';
+					} else if (result < 30) {
+						document.getElementById('bmi-status').innerHTML = 'Overweight';
+					} else {
+						document.getElementById('bmi-status').innerHTML = 'Obesity';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body style="background-color: yellowgreen">
+		<div
+			class="container-fluid"
+			style="height: 500px; display: grid; justify-content: center"
+		>
+			<h1>BMI Calculate</h1>
+			<label>
+				<input
+					style="
+						background-color: white;
+						border-radius: 10px;
+						height: 50px;
+						width: 450px;
+						font-size: large;
+					"
+					id="height"
+					type="number"
+					placeholder="Enter your Height :"
+				/>
+			</label>
+			<label>
+				<input
+					style="
+						background-color: white;
+						border-radius: 10px;
+						height: 60px;
+						width: 500px;
+						font-size: large;
+					"
+					id="weight"
+					type="number"
+					placeholder="Enter your Weight :"
+				/>
+			</label>
+
+			<button
+				style="
+					background-color: springgreen;
+					border-radius: 10px;
+					height: 35px;
+					width: 460px;
+					font-size: large;
+				"
+				type="submit"
+				onclick="Calculate()"
+			>
+				Calculate BMI
+			</button>
+
+			<div
+				class="bmi-value"
+				style="
+					background-color: springgreen;
+					height: 100px;
+					border-radius: 10px;
+					width: 450px;
+					font-size: large;
+					padding: 20px;
+				"
+			>
+				<h4>BMI Value:</h4>
+				<div id="bmi-output"></div>
+			</div>
+			<div
+				class="status"
+				style="
+					background-color: greenyellow;
+					border-radius: 10px;
+					height: 100px;
+					font-size: large;
+					padding: 15px;
+				"
+			>
+				<h4>Status:</h4>
+				<div id="bmi-status"></div>
+			</div>
+		</div>
+	</body>
+</html>
